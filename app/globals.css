@@ -1,26 +1,55 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* === FONT & BODY === */
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  @apply bg-blue-50 text-gray-800;
+  padding-top: 4rem;
+}
+
+a {
+  @apply text-[#5390D9] hover:underline;
+}
+
+/* === CUSTOM NAVBAR === */
+nav {
+  @apply shadow-md;
+}
+
+/* === CUSTOM SECTION === */
+section {
+  @apply w-full;
+}
+
+/* === BUTTON === */
+.btn-primary {
+  @apply bg-[#A2D2FF] text-white px-6 py-3 rounded-full font-semibold hover:bg-[#90C9F9];
+}
+
+/* === CARD === */
+.card {
+  @apply bg-white p-6 rounded-lg shadow hover:shadow-lg transition;
+}
+
+/* === TITLE === */
+h1,
+h2,
+h3,
+h4 {
+  @apply font-bold;
+}
+
+h1 {
+  @apply text-4xl md:text-5xl;
+}
+
+h2 {
+  @apply text-3xl md:text-4xl;
+}
+
+h3 {
+  @apply text-2xl md:text-3xl;
 }
