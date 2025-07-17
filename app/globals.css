@@ -1,55 +1,79 @@
-@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-/* === FONT & BODY === */
+/* === BASE STYLES === */
 html {
   scroll-behavior: smooth;
 }
 
 body {
-  @apply bg-blue-50 text-gray-800;
+  background-color: #eff6ff; /* bg-blue-50 */
+  color: #1f2937; /* text-gray-800 */
   padding-top: 4rem;
 }
 
 a {
-  @apply text-[#5390D9] hover:underline;
+  color: #5390d9;
 }
 
-/* === CUSTOM NAVBAR === */
+a:hover {
+  text-decoration: none;
+}
+
 nav {
-  @apply shadow-md;
+  box-shadow: 0 1px 2px rgb(0 0 0 / 0.1);
 }
 
-/* === CUSTOM SECTION === */
 section {
-  @apply w-full;
+  width: 100%;
 }
 
-/* === BUTTON === */
-.btn-primary {
-  @apply bg-[#A2D2FF] text-white px-6 py-3 rounded-full font-semibold hover:bg-[#90C9F9];
-}
-
-/* === CARD === */
-.card {
-  @apply bg-white p-6 rounded-lg shadow hover:shadow-lg transition;
-}
-
-/* === TITLE === */
 h1,
 h2,
 h3,
 h4 {
-  @apply font-bold;
+  font-weight: bold;
 }
 
 h1 {
-  @apply text-4xl md:text-5xl;
+  font-size: 2.25rem; /* text-4xl */
+}
+
+@media (min-width: 768px) {
+  h1 {
+    font-size: 3rem; /* md:text-5xl */
+  }
 }
 
 h2 {
-  @apply text-3xl md:text-4xl;
+  font-size: 1.875rem; /* text-3xl */
+}
+
+@media (min-width: 768px) {
+  h2 {
+    font-size: 2.25rem; /* md:text-4xl */
+  }
 }
 
 h3 {
-  @apply text-2xl md:text-3xl;
+  font-size: 1.5rem; /* text-2xl */
+}
+
+@media (min-width: 768px) {
+  h3 {
+    font-size: 1.875rem; /* md:text-3xl */
+  }
+}
+
+/* === REMOVE NUMBER INPUT SPINNER === */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
+  appearance: textfield;
 }
