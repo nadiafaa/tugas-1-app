@@ -29,6 +29,15 @@ export default function ProductsPage() {
   }, []);
 
   const addProduct = async () => {
+    if (!name.trim()) {
+      alert("Mohon isi nama produk!");
+      return;
+    }
+    if (price === undefined) {
+      alert("Mohon isi harga produk!");
+      return;
+    }
+
     await fetch("/api/products", {
       method: "POST",
       body: JSON.stringify({ name, price }),
@@ -68,7 +77,7 @@ export default function ProductsPage() {
 
   return (
     <main className="max-w-3xl mx-auto p-4">
-      <h1 className="text-3xl font-bold mb-6">Products CRUD</h1>
+      <h1 className="text-3xl font-bold mb-6">ApotekKu's Product</h1>
 
       <div className="mb-8 space-y-2">
         <input
