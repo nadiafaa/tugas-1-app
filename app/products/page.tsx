@@ -77,7 +77,7 @@ export default function ProductsPage() {
 
   return (
     <main className="max-w-3xl mx-auto p-4">
-      <h1 className="text-3xl font-bold mb-6">ApotekKu's Product</h1>
+      <h1 className="text-3xl font-bold mb-6">ApotekKu&apos;s Product</h1>
 
       <div className="mb-8 space-y-2">
         <input

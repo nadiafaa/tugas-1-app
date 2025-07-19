@@ -1,5 +1,3 @@
-import { use } from "react";
-
 interface ProductPageProps {
   params: {
     id: string;
