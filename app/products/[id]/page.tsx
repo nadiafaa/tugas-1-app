@@ -1,13 +1,10 @@
-interface ProductPageProps {
-  params: {
-    id: string;
-  };
-}
-
-export default async function ProductPage({ params }: ProductPageProps) {
+export default async function ProductPage({
+  params,
+}: {
+  params: { id: string };
+}) {
   const { id } = params;
 
-  // Dummy data contoh
   const product = {
     id,
     name: `Produk Apotek ${id}`,
