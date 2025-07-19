@@ -8,4 +8,4 @@ Lihat folder `dokumentasi/` untuk screenshot pengerjaan.
 
 ## Live App
 
-[]()
+[https://tugas1app.vercel.app/](https://tugas1app.vercel.app/)
