@@ -11,4 +11,4 @@ Teknologi:
 - Neon Postgres DB
 - Vercel Deployment
 
-Link Deploy: [(https://tugas1app.vercel.app/products)]
+Link Deploy: [https://tugas1app.vercel.app/products](https://tugas1app.vercel.app/products)
