@@ -8,4 +8,4 @@ Lihat folder `dokumentasi/` untuk screenshot pengerjaan.
 
 ## Live App
 
-[https://tugas-1-app.vercel.app](https://tugas-1-app.vercel.app)
+[tugas-1-99trhm1tx-nadiafas-projects-652b1838.vercel.app](tugas-1-99trhm1tx-nadiafas-projects-652b1838.vercel.app)
