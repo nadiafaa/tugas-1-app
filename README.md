@@ -1,11 +1,14 @@
-# Tugas 1 - Install Next.js
+# Tugas 5 - CRUD Next.js dengan Neon Database
 
-Project ini adalah hasil dari perintah `npx create-next-app`.
+Fitur:
+- Create (Tambah Produk)
+- Read (Lihat Produk)
+- Update (Edit Produk)
+- Delete (Hapus Produk)
 
-## Bukti
+Teknologi:
+- Next.js App Router
+- Neon Postgres DB
+- Vercel Deployment
 
-Lihat folder `dokumentasi/` untuk screenshot pengerjaan.
-
-## Live App
-
-[https://tugas1app.vercel.app/](https://tugas1app.vercel.app/)
+Link Deploy: [https://tugas1app.vercel.app/products](https://tugas-1-app.vercel.app)
