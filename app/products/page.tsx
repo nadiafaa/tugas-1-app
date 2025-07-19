@@ -10,18 +10,19 @@ type Product = {
 };
 
 export default function ProductsPage() {
-  const [products, setProducts] = useState<Product[]>([
-    { id: 1, name: "Paracetamol", price: 5000 },
-    { id: 2, name: "Flutamol", price: 10000 },
-  ]);
+  const [products, setProducts] = useState<Product[]>([]);
+  const [loading, setLoading] = useState(true);
+
   const [name, setName] = useState("");
   const [price, setPrice] = useState<number | undefined>(undefined);
   const [editId, setEditId] = useState<number | null>(null);
 
   const fetchProducts = async () => {
+    setLoading(true);
     const res = await fetch("/api/products");
     const data = await res.json();
     setProducts(data);
+    setLoading(false);
   };
 
   useEffect(() => {
@@ -40,6 +41,7 @@ export default function ProductsPage() {
 
     await fetch("/api/products", {
       method: "POST",
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ name, price }),
     });
     setName("");
@@ -48,9 +50,10 @@ export default function ProductsPage() {
   };
 
   const updateProduct = async () => {
-    await fetch("/api/products", {
+    await fetch(`/api/products/${editId}`, {
       method: "PUT",
-      body: JSON.stringify({ id: editId, name, price }),
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ name, price }),
     });
     setEditId(null);
     setName("");
@@ -62,9 +65,8 @@ export default function ProductsPage() {
     const confirmed = window.confirm("Yakin mau hapus produk ini?");
     if (!confirmed) return;
 
-    await fetch("/api/products", {
+    await fetch(`/api/products/${id}`, {
       method: "DELETE",
-      body: JSON.stringify({ id }),
     });
     fetchProducts();
   };
@@ -133,38 +135,42 @@ export default function ProductsPage() {
       </div>
 
       <h2 className="text-2xl font-semibold mb-4">Daftar Produk</h2>
-      <ul className="space-y-3">
-        {products.map((p) => (
-          <li
-            key={p.id}
-            className="border p-4 rounded-2xl shadow flex justify-between items-center"
-          >
-            <div>
-              <Link
-                href={`/products/${p.id}`}
-                className="text-blue-600 font-semibold"
-              >
-                {p.name}
-              </Link>
-              <p className="text-gray-600 text-sm">Rp {p.price}</p>
-            </div>
-            <div className="flex gap-2">
-              <button
-                className="bg-yellow-200 text-yellow-800 px-3 py-1 rounded-full hover:bg-yellow-300 transition"
-                onClick={() => startEdit(p)}
-              >
-                Edit
-              </button>
-              <button
-                className="bg-red-200 text-red-800 px-3 py-1 rounded-full hover:bg-red-300 transition"
-                onClick={() => deleteProduct(p.id)}
-              >
-                Delete
-              </button>
-            </div>
-          </li>
-        ))}
-      </ul>
+      {loading ? (
+        <p className="text-gray-500">Loading products...</p>
+      ) : (
+        <ul className="space-y-3">
+          {products.map((p) => (
+            <li
+              key={p.id}
+              className="border p-4 rounded-2xl shadow flex justify-between items-center"
+            >
+              <div>
+                <Link
+                  href={`/products/${p.id}`}
+                  className="text-blue-600 font-semibold"
+                >
+                  {p.name}
+                </Link>
+                <p className="text-gray-600 text-sm">Rp {p.price}</p>
+              </div>
+              <div className="flex gap-2">
+                <button
+                  className="bg-yellow-200 text-yellow-800 px-3 py-1 rounded-full hover:bg-yellow-300 transition"
+                  onClick={() => startEdit(p)}
+                >
+                  Edit
+                </button>
+                <button
+                  className="bg-red-200 text-red-800 px-3 py-1 rounded-full hover:bg-red-300 transition"
+                  onClick={() => deleteProduct(p.id)}
+                >
+                  Delete
+                </button>
+              </div>
+            </li>
+          ))}
+        </ul>
+      )}
     </main>
   );
 }
